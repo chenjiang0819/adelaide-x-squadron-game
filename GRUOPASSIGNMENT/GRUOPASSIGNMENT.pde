@@ -161,8 +161,8 @@ void setup() {
   expB2=loadImage("expB2.png");
   expB3=loadImage("expB3.png");
   expB4=loadImage("expB4.png");
-  expB5=loadImage("expB6.png");
-  expB6=loadImage("expB1.png");
+  expB5=loadImage("expB5.png");
+  expB6=loadImage("expB6.png");
   expB7=loadImage("expB7.png");
   expB8=loadImage("expB8.png");
   expB9=loadImage("expB9.png");
@@ -204,19 +204,18 @@ void setup() {
   redu=random(100, 150);
   minim = new
     Minim(this); 
-  player = minim.loadFile("StarWars.mp3");
-  shoot =  minim.loadFile("shoot.wav");
-  exploB = minim.loadFile("ExplosionB.wav");
-  exploS = minim.loadFile("ExplosionS.wav");
-  zap = minim.loadFile("ZAP.wav");
-  etrmus = minim.loadFile("March.mp3");
+  player = safeAudio("theme.wav");
+  shoot =  safeAudio("shoot.wav");
+  exploB = safeAudio("ExplosionB.wav");
+  exploS = safeAudio("ExplosionS.wav");
+  zap = safeAudio("ZAP.wav");
+  etrmus = safeAudio("march.wav");
   Yyyyy=height;
   Yy=height;
   screen=0;
 }
 //create a function for initial data for every new begining
 void initData() {
-  size(500, 500);
   bullMoveX=0;
   bullMoveY=height*0.9;
   bulrMoveX=width;
@@ -270,6 +269,8 @@ void initData() {
   a21 = -1;
   a22 = -1;
   a23 = -1;
+  bord=10;
+  speed_y=0;
   clsscrn=0;
   lz=0;
   time=0;
@@ -334,11 +335,11 @@ void draw() {
   }
   //change the background music
   if (screen==1||screen==4) {
-    player.rewind();
-    etrmus.play();
+    if (player != null) player.rewind();
+    if (etrmus != null) etrmus.play();
   } else if (screen==2||screen==0||screen==3) {
-    etrmus.rewind();
-    player.play();
+    if (etrmus != null) etrmus.rewind();
+    if (player != null) player.play();
   }
   //draw the entrance interface
   if (screen==1) {
@@ -638,8 +639,8 @@ void draw() {
       float lY=monthershipY-250-110;
       int frame = a1;
       if (a1==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a1 ++;   
       if ( frame== 0) {
@@ -701,8 +702,8 @@ void draw() {
       float lY=monthershipY-250+50;
       int frame = a2;
       if (a2==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a2 ++;   
       if ( frame== 0) {
@@ -764,8 +765,8 @@ void draw() {
       float lY=monthershipY-250+30;
       int frame = a3;
       if (a3==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a3 ++;   
       if ( frame== 0) {
@@ -827,8 +828,8 @@ void draw() {
       float lY=monthershipY-250+170;
       int frame = a4;
       if (a4==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a4 ++;   
       if ( frame== 0) {
@@ -890,8 +891,8 @@ void draw() {
       float lY=monthershipY-250-20;
       int frame = a5;
       if (a5==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a5 ++;   
       if ( frame== 0) {
@@ -953,8 +954,8 @@ void draw() {
       float lY=monthershipY-250+130;
       int frame = a6;
       if (a6==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a6 ++;   
       if ( frame== 0) {
@@ -1016,8 +1017,8 @@ void draw() {
       float lY=monthershipY-250+0;
       int frame = a7;
       if (a7==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a7 ++;   
       if ( frame== 0) {
@@ -1080,8 +1081,8 @@ void draw() {
       float lY=monthershipY-250-50;
       int frame = a8;
       if (a8==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a8 ++;   
       if ( frame== 0) {
@@ -1144,8 +1145,8 @@ void draw() {
       float lY=monthershipY-250+100;
       int frame = a9;
       if (a9==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a9 ++;   
       if ( frame== 0) {
@@ -1208,8 +1209,8 @@ void draw() {
       float lY=monthershipY-250+150;
       int frame = a10;
       if (a10==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a10 ++;   
       if ( frame== 0) {
@@ -1272,8 +1273,8 @@ void draw() {
       float lY=monthershipY-250-100;
       int frame = a11;
       if (a11==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a11 ++;   
       if ( frame== 0) {
@@ -1336,8 +1337,8 @@ void draw() {
       float lY=monthershipY-250+250;
       int frame = a12;
       if (a12==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a12 ++;   
       if ( frame== 0) {
@@ -1399,8 +1400,8 @@ void draw() {
       float lY=monthershipY-250+300;
       int frame = a13;
       if (a13==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a13 ++;   
       if ( frame== 0) {
@@ -1462,8 +1463,8 @@ void draw() {
       float lY=monthershipY-250+350;
       int frame = a14;
       if (a14==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a14 ++;   
       if ( frame== 0) {
@@ -1525,8 +1526,8 @@ void draw() {
       float lY=monthershipY-250-100;
       int frame = a15;
       if (a15==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a15 ++;   
       if ( frame== 0) {
@@ -1589,8 +1590,8 @@ void draw() {
       float lY=monthershipY-250-50;
       int frame = a16;
       if (a16==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a16 ++;   
       if ( frame== 0) {
@@ -1654,8 +1655,8 @@ void draw() {
       float lY=monthershipY-250;
       int frame = a17;
       if (a17==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a17 ++;   
       if ( frame== 0) {
@@ -1717,8 +1718,8 @@ void draw() {
       float lY=monthershipY-250+50;
       int frame = a18;
       if (a18==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a18 ++;   
       if ( frame== 0) {
@@ -1781,8 +1782,8 @@ void draw() {
       float lY=monthershipY-250+100;
       int frame = a19;
       if (a19==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a19 ++;   
       if ( frame== 0) {
@@ -1844,8 +1845,8 @@ void draw() {
       float lY=monthershipY-250+150;
       int frame = a20;
       if (a20==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a20 ++;   
       if ( frame== 0) {
@@ -1907,8 +1908,8 @@ void draw() {
       float lY=monthershipY-250+200;
       int frame = a21;
       if (a21==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a21 ++;   
       if ( frame== 0) {
@@ -1970,8 +1971,8 @@ void draw() {
       float lY=monthershipY-250+250;
       int frame = a22;
       if (a22==0) {
-        exploS.rewind();  
-        exploS.play();
+        if (exploS != null) exploS.rewind();  
+        if (exploS != null) exploS.play();
       }
       a22 ++;   
       if ( frame== 0) {
@@ -2034,8 +2035,8 @@ void draw() {
       float lY=monthershipY-250+20;
       int frame = a;
       if (a==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a++;   
       if ( frame== 0) {
@@ -2087,8 +2088,8 @@ void draw() {
       float lY=monthershipY+80;
       int frame = a23;
       if (a23==0) {
-        exploB.rewind();  
-        exploB.play();
+        if (exploB != null) exploB.rewind();  
+        if (exploB != null) exploB.play();
       }
       a23++;   
       if ( frame== 0) {
@@ -2378,13 +2379,13 @@ void mouseClicked() {
     redu=ran*lev;
   }
   if (screen==2) {
-    shoot.rewind();
-    shoot.play();
+    if (shoot != null) shoot.rewind();
+    if (shoot != null) shoot.play();
   }
   if (screen==1) {
 
-    zap.play();
-    zap.rewind();
+    if (zap != null) zap.play();
+    if (zap != null) zap.rewind();
   }
   if (screen==4) {
     screen=1;
@@ -2392,114 +2393,116 @@ void mouseClicked() {
 }
 //use the mousePressed function to implement the damage of enemy
 void mousePressed() {
+  if (screen != 2) return; // gameplay hit detection only during battle
+
   if (mouseX>monthershipX-220&&mouseX<monthershipX-250+200&&mouseY>monthershipY-250&&mouseY<monthershipY-250+150) { 
     if (blood>0==true) {      
-      blood=blood-redu;
+      blood=max(0, blood-redu);
     } else if (blood<0) {
       blood=0;
     }
   }
   if (mouseX>monthershipX-250+20&&mouseX<monthershipX-250+20+60&&mouseY>monthershipY-250-110&&mouseY<monthershipY-250-110+60) { 
     if (blood1>0==true) {      
-      blood1=blood1-redu;
+      blood1=max(0, blood1-redu);
     } else if (blood1<0) {
       blood1=0;
     }
   }
   if (mouseX>monthershipX-250-100&&mouseX<monthershipX-250-100+60&&mouseY>monthershipY-250+50&&mouseY<monthershipY-250+50+60) { 
     if (blood2>0==true) {      
-      blood2=blood2-redu;
+      blood2=max(0, blood2-redu);
     } else if (blood2<0) {
       blood2=0;
     }
   } 
   if (mouseX>monthershipX-250+250&&mouseX<monthershipX-250+250+60&&mouseY>monthershipY-250+30&&mouseY<monthershipY-250+30+60) {  
     if (blood3>0==true) {      
-      blood3=blood3-redu;
+      blood3=max(0, blood3-redu);
     } else if (blood3<0) {
       blood3=0;
     }
   }
   if (mouseX>monthershipX-250+100&&mouseX<monthershipX-250+100+60&&mouseY>monthershipY-250+170&&mouseY<monthershipY-250+170+60) { 
     if (blood4>0==true) {      
-      blood4=blood4-redu;
+      blood4=max(0, blood4-redu);
     } else if (blood4<0) {
       blood4=0;
     }
   }
   if (mouseX>monthershipX-250+200&&mouseX<monthershipX-250+200+60&&mouseY>monthershipY-250-40&&mouseY<monthershipY-250-40+60) { 
     if (blood5>0==true) {      
-      blood5=blood5-redu;
+      blood5=max(0, blood5-redu);
     } else if (blood5<0) {
       blood5=0;
     }
   }
   if (mouseX>monthershipX-250-30&&mouseX<monthershipX-250-30+60&&mouseY>monthershipY-250+130&&mouseY<monthershipY-250+130+60) { 
     if (blood6>0==true) {      
-      blood6=blood6-redu;
+      blood6=max(0, blood6-redu);
     } else if (blood4<0) {
       blood6=0;
     }
   }
   if (mouseX>monthershipX-250+350&&mouseX<monthershipX-250+350+40&&mouseY>monthershipY-250&&mouseY<monthershipY-250+60) { 
     if (blood7>0==true) {      
-      blood7=blood7-redu;
+      blood7=max(0, blood7-redu);
     } else if (blood7<0) {
       blood7=0;
     }
   }
   if (mouseX>monthershipX-250+400&&mouseX<monthershipX-250+400+40&&mouseY>monthershipY-250-50&&mouseY<monthershipY-250-50+40) { 
     if (blood8>0==true) {      
-      blood8=blood8-redu;
+      blood8=max(0, blood8-redu);
     } else if (blood8<0) {
       blood8=0;
     }
   }
   if (mouseX>monthershipX-250+250&&mouseX<monthershipX-250+250+40&&mouseY>monthershipY-250+100&&mouseY<monthershipY-250+100+40) { 
     if (blood9>0==true) {      
-      blood9=blood9-redu;
+      blood9=max(0, blood9-redu);
     } else if (blood9<0) {
       blood9=0;
     }
   }
   if (mouseX>monthershipX-250+200&&mouseX<monthershipX-250+200+40&&mouseY>monthershipY-250+150&&mouseY<monthershipY-250+150+40) { 
     if (blood10>0==true) {      
-      blood10=blood10-redu;
+      blood10=max(0, blood10-redu);
     } else if (blood10<0) {
       blood10=0;
     }
   }
-  if (mouseX>monthershipX-250+450&&mouseX<monthershipX-250+450+40&&mouseY>monthershipY-250100&&mouseY<monthershipY-250-100+40) { 
+  if (mouseX>monthershipX-250+450&&mouseX<monthershipX-250+450+40&&mouseY>monthershipY-250-100&&mouseY<monthershipY-250-100+40) { 
     if (blood11>0==true) {      
-      blood11=blood11-redu;
+      blood11=max(0, blood11-redu);
     } else if (blood11<0) {
       blood11=0;
     }
   }
   if (mouseX>monthershipX-250+100&&mouseX<monthershipX-250+100+40&&mouseY>monthershipY-250+250&&mouseY<monthershipY-250+250+40) { 
     if (blood12>0==true) {      
-      blood12=blood12-redu;
+      blood12=max(0, blood12-redu);
     } else if (blood12<0) {
       blood12=0;
     }
   }
   if (mouseX>monthershipX-250+50&&mouseX<monthershipX-250+50+40&&mouseY>monthershipY-250+300&&mouseY<monthershipY-250+300+40) { 
     if (blood13>0==true) {      
-      blood13=blood13-redu;
+      blood13=max(0, blood13-redu);
     } else if (blood13<0) {
       blood13=0;
     }
   }
   if (mouseX>monthershipX-250&&mouseX<monthershipX-250+40&&mouseY>monthershipY-250+350&&mouseY<monthershipY-250+350+40) { 
     if (blood14>0==true) {      
-      blood14=blood14-redu;
+      blood14=max(0, blood14-redu);
     } else if (blood14<0) {
       blood14=0;
     }
   }
   if (mouseX>monthershipX-250+550&&mouseX<monthershipX-250+550+40&&mouseY>monthershipY-250-100&&mouseY<monthershipY-250-100+40) { 
     if (blood15>0==true) {      
-      blood15=blood15-redu;
+      blood15=max(0, blood15-redu);
     } else if (blood15<0) {
       blood15=0;
     }
@@ -2507,7 +2510,7 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+500&&mouseX<monthershipX-250+500+40&&mouseY>monthershipY-250-50&&mouseY<monthershipY-250-50+40) { 
     if (blood16>0==true) {      
-      blood16=blood16-redu;
+      blood16=max(0, blood16-redu);
     } else if (blood16<0) {
       blood16=0;
     }
@@ -2515,7 +2518,7 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+450&&mouseX<monthershipX-250+450+40&&mouseY>monthershipY-250-0&&mouseY<monthershipY-250-0+40) { 
     if (blood17>0==true) {      
-      blood17=blood17-redu;
+      blood17=max(0, blood17-redu);
     } else if (blood17<0) {
       blood17=0;
     }
@@ -2523,7 +2526,7 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+400&&mouseX<monthershipX-250+400+40&&mouseY>monthershipY-250+50&&mouseY<monthershipY-250+50+40) { 
     if (blood18>0==true) {      
-      blood18=blood18-redu;
+      blood18=max(0, blood18-redu);
     } else if (blood18<0) {
       blood18=0;
     }
@@ -2531,7 +2534,7 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+350&&mouseX<monthershipX-250+350+40&&mouseY>monthershipY-250+100&&mouseY<monthershipY-250+100+40) { 
     if (blood19>0==true) {      
-      blood19=blood19-redu;
+      blood19=max(0, blood19-redu);
     } else if (blood19<0) {
       blood19=0;
     }
@@ -2539,7 +2542,7 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+300&&mouseX<monthershipX-250+300+40&&mouseY>monthershipY-250+150&&mouseY<monthershipY-250+150+40) { 
     if (blood20>0==true) {      
-      blood20=blood20-redu;
+      blood20=max(0, blood20-redu);
     } else if (blood20<0) {
       blood20=0;
     }
@@ -2547,7 +2550,7 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+250&&mouseX<monthershipX-250+250+40&&mouseY>monthershipY-250+200&&mouseY<monthershipY-250+200+40) { 
     if (blood21>0==true) {      
-      blood21=blood21-redu;
+      blood21=max(0, blood21-redu);
     } else if (blood21<0) {
       blood21=0;
     }
@@ -2555,9 +2558,17 @@ void mousePressed() {
 
   if (mouseX>monthershipX-250+200&&mouseX<monthershipX-250+200+40&&mouseY>monthershipY-250+250&&mouseY<monthershipY-250+250+40) { 
     if (blood22>0==true) {      
-      blood22=blood22-redu;
+      blood22=max(0, blood22-redu);
     } else if (blood22<0) {
       blood22=0;
     }
   }
+}
+
+// Silent mode permits headless/resource validation without a sound device.
+AudioPlayer safeAudio(String filename) {
+  if ("true".equals(System.getProperty("xsquadron.silent"))) return null;
+  AudioPlayer sound = minim.loadFile(filename);
+  if (sound == null) println("Optional sound unavailable: " + filename);
+  return sound;
 }
